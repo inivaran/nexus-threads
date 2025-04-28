@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Portfolio() {
   return (
@@ -11,11 +12,11 @@ export default function Portfolio() {
 
       <header className="bg-white shadow-md py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <a href="/" className="text-xl font-bold text-gray-800">Nexus Threads</a>
+          <Link href="/" className="text-xl font-bold text-gray-800">Nexus Threads</Link>
           <nav className="space-x-4">
-            <a href="/" className="text-gray-600 hover:text-gray-800">Home</a>
-            <a href="/about" className="text-gray-600 hover:text-gray-800">About Us</a>
-            <a href="/contact" className="text-gray-600 hover:text-gray-800">Contact</a>
+            <Link href="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+            <Link href="/about" className="text-gray-600 hover:text-gray-800">About Us</Link>
+            <Link href="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
           </nav>
         </div>
       </header>

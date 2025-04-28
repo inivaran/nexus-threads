@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Contact() {
   return (
@@ -11,11 +12,11 @@ export default function Contact() {
 
       <header className="bg-white shadow-md py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <a href="/" className="text-xl font-bold text-gray-800">Nexus Threads</a>
+          <Link href="/" className="text-xl font-bold text-gray-800">Nexus Threads</Link>
           <nav className="space-x-4">
-            <a href="/" className="text-gray-600 hover:text-gray-800">Home</a>
-            <a href="/portfolio" className="text-gray-600 hover:text-gray-800">Portfolio</a>
-            <a href="/about" className="text-gray-600 hover:text-gray-800">About Us</a>
+            <Link href="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+            <Link href="/portfolio" className="text-gray-600 hover:text-gray-800">Portfolio</Link>
+            <Link href="/about" className="text-gray-600 hover:text-gray-800">About Us</Link>
           </nav>
         </div>
       </header>
@@ -23,7 +24,7 @@ export default function Contact() {
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
         <p className="text-lg text-gray-700">
-          We'd love to hear from you! Whether you have questions about our products or need support, feel free to reach out.
+          We`&apos;`d love to hear from you! Whether you have questions about our products or need support, feel free to reach out.
         </p>
         <form className="mt-8 space-y-4">
           <div>

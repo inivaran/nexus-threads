@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image'; // For optimized image handling (works in Server Components)
+import Link from 'next/link'; // For client-side navigation
 
 // Your striking visual import (assuming it's in the public directory)
 import HeroImage from '../../public/striking-visual.png';
@@ -16,11 +17,11 @@ export default function Home() {
 
       <header className="bg-white shadow-md py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <a href="/" className="text-xl font-bold text-gray-800">Nexus Threads</a>
+          <Link href="/" className="text-xl font-bold text-gray-800">Nexus Threads</Link>
           <nav className="space-x-4">
-            <a href="/portfolio" className="text-gray-600 hover:text-gray-800">Portfolio</a>
-            <a href="/about" className="text-gray-600 hover:text-gray-800">About Us</a>
-            <a href="/contact" className="text-gray-600 hover:text-gray-800">Contact</a>
+            <Link href="/portfolio" className="text-gray-600 hover:text-gray-800">Portfolio</Link>
+            <Link href="/about" className="text-gray-600 hover:text-gray-800">About Us</Link>
+            <Link href="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
           </nav>
         </div>
       </header>
