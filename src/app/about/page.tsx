@@ -23,8 +23,7 @@ export default function About() {
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-4">About Us</h1>
         <p className="text-lg text-gray-700">
-          Nexus Threads is dedicated to creating high-quality apparel that blends innovation with global style. 
-          Our mission is to provide the UK market with designs that are both fashionable and sustainable.
+          At Nexus Threads, we're weaving together innovative design and global style to craft high-quality apparel. Our commitment goes beyond fashion: we prioritize ethical production, enduring quality, and eco-conscious practices for a sustainable future.
         </p>
         <p className="text-lg text-gray-700 mt-4">
           We believe in the power of creativity and craftsmanship, and we strive to bring you the best in modern fashion.
