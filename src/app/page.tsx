@@ -26,9 +26,13 @@ export default function Home() {
       </header>
 
       <main className="flex-grow">
-        <section className="relative py-62 bg-gray-200 overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center">
-            <img src={HeroImage.src} alt="Nexus Threads Design" style={{ objectFit: 'cover', height: '100%' }} />
+      <section className="relative py-62 bg-gray-200 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src={HeroImage.src}
+              alt="Nexus Threads Design"
+              className="w-full h-full object-cover"
+            />
             <div className="absolute inset-0 bg-black opacity-30"></div>
           </div>
           <div className="container mx-auto px-4 relative z-10 text-center text-white">
