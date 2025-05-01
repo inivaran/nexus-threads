@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Image from 'next/image'; // For optimized image handling (works in Server Components)
 import Link from 'next/link'; // For client-side navigation
 
 // Your striking visual import (assuming it's in the public directory)
@@ -29,7 +28,7 @@ export default function Home() {
       <main className="flex-grow">
         <section className="relative py-62 bg-gray-200 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center">
-            <Image src={HeroImage} alt="Nexus Threads Design" fill style={{ objectFit: 'cover', height: '100%' }} />
+            <img src={HeroImage.src} alt="Nexus Threads Design" style={{ objectFit: 'cover', height: '100%' }} />
             <div className="absolute inset-0 bg-black opacity-30"></div>
           </div>
           <div className="container mx-auto px-4 relative z-10 text-center text-white">
