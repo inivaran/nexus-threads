@@ -38,9 +38,9 @@ export default function Home() {
           <div className="container mx-auto px-4 relative z-10 text-center text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Where Innovation Threads into Global Style</h1>
             <p className="text-lg md:text-xl mb-8">Your source for high-quality apparel, designed with the UK market in mind.</p>
-            <a href="/portfolio" className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full">
+            <Link href="/portfolio" className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full">
               Explore Our Designs
-            </a>
+            </Link>
           </div>
         </section>
 
