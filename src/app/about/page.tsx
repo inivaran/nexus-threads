@@ -26,7 +26,7 @@ export default function About() {
         <section className="mb-12">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-lg text-gray-700">
-            At Nexus Threads, we're weaving together innovative design and global style to craft high-quality apparel. Our commitment goes beyond fashion: we prioritize ethical production, enduring quality, and eco-conscious practices for a sustainable future.
+            At Nexus Threads, we&apos;re weaving together innovative design and global style to craft high-quality apparel. Our commitment goes beyond fashion: we prioritize ethical production, enduring quality, and eco-conscious practices for a sustainable future.
           </p>
           <p className="text-lg text-gray-700 mt-4">
             We believe in the power of creativity and craftsmanship, and we strive to bring you the best in modern fashion.
@@ -46,7 +46,7 @@ export default function About() {
           <div className="md:w-1/2 w-full">
             <h2 className="text-2xl font-bold mb-4">Our Design Philosophy - Where Creativity Meets Aesthetics</h2>
             <p className="text-lg text-gray-700 mb-4">
-              At Nexus Threads, our design aesthetic is born from a passion for innovation, meticulously woven with a deep understanding of the evolving tastes and trends of the UK market. Our talented design team draws inspiration from global style currents, filtering them through a distinctly British lens to create collections that resonate with your discerning customers. We don't just follow trends; we strive to anticipate them, offering unique silhouettes, captivating details, and a fresh perspective that sets your inventory apart.
+              At Nexus Threads, our design aesthetic is born from a passion for innovation, meticulously woven with a deep understanding of the evolving tastes and trends of the UK market. Our talented design team draws inspiration from global style currents, filtering them through a distinctly British lens to create collections that resonate with your discerning customers. We don&apos;t just follow trends; we strive to anticipate them, offering unique silhouettes, captivating details, and a fresh perspective that sets your inventory apart.
             </p>
           </div>
         </section>
@@ -64,7 +64,7 @@ export default function About() {
           <div className="md:w-1/2 w-full">
             <h2 className="text-2xl font-bold mb-4">Consciously Crafted - Our Commitment to Sustainable Practices</h2>
             <p className="text-lg text-gray-700 mb-4">
-              We believe that beautiful apparel shouldn't come at the expense of our planet. Sustainability is at the heart of everything we do at Nexus Threads. We are committed to minimizing our environmental footprint through conscious choices at every stage of our process. This includes:
+              We believe that beautiful apparel shouldn&apos;t come at the expense of our planet. Sustainability is at the heart of everything we do at Nexus Threads. We are committed to minimizing our environmental footprint through conscious choices at every stage of our process. This includes:
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li>
