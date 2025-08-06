@@ -24,7 +24,7 @@ export default function Contact() {
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
         <p className="text-lg text-gray-700">
-          We`&apos;`d love to hear from you! Whether you have questions about our products or need support, feel free to reach out.
+          We&apos;d love to hear from you! Whether you have questions about our products or need support, feel free to reach out.
         </p>
         <form className="mt-8 space-y-4">
           <div>
