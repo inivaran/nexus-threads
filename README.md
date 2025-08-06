@@ -17,28 +17,18 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ### Building the static website
 
-```bash
+```sh
 npm run build
 ```
 
 ### Deploying the website
 
-```bash
-# Upload the static site to S3
-aws s3 cp ./out s3://nexus-threads-uk/ --recursive --profile $AWS_PROFILE
+```sh
+# Upload to S3
+aws s3 sync out/ s3://nexus-threads-uk/ --delete
 
 # Create cache invalidation if it already doesn't exist
 aws cloudfront create-invalidation \
   --distribution-id <your-distribution-id> \
-  --paths "/*" \
-  --profile $AWS_PROFILE
-
+  --paths "/*"
 ```
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
