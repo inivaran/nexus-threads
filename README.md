@@ -5,7 +5,7 @@ Nexus threads is a [Next.js](https://nextjs.org) web app bootstrapped with [`cre
 
 First, run the development server:
 
-```bash
+```sh
 npm run dev
 ```
 
@@ -15,20 +15,11 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Building the static website
+### Building and deploying the static website
 
 ```sh
+# Build the static site: /out folder
 npm run build
-```
-
-### Deploying the website
-
-```sh
-# Upload to S3
-aws s3 sync out/ s3://nexus-threads-uk/ --delete
-
-# Create cache invalidation if it already doesn't exist
-aws cloudfront create-invalidation \
-  --distribution-id <your-distribution-id> \
-  --paths "/*"
+# Deploy the site
+make deploy-site
 ```

@@ -1,8 +1,34 @@
-import React from 'react';
+'use client'
+
+import React, { useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = formRef.current;
+    if (!form) return;
+    const data = {
+      name: (form.elements.namedItem('name') as HTMLInputElement)?.value,
+      email: (form.elements.namedItem('email') as HTMLInputElement)?.value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement)?.value,
+    };
+    const res = await fetch('https://47fou6hiii.execute-api.eu-west-2.amazonaws.com/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (res.ok) {
+      alert('Message sent!');
+      form.reset();
+    } else {
+      alert('Failed to send message.');
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
@@ -26,7 +52,7 @@ export default function Contact() {
         <p className="text-lg text-gray-700">
           We&apos;d love to hear from you! Whether you have questions about our products or need support, feel free to reach out.
         </p>
-        <form className="mt-8 space-y-4">
+        <form ref={formRef} className="mt-8 space-y-4" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
             <input

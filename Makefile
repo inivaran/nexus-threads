@@ -1,4 +1,4 @@
-.PHONY: stack destroy-stack deploy
+.PHONY: stack destroy-stack deploy-site
 
 TOFU_DIR=infra
 PROJECT_NAME=nexus-threads
@@ -27,8 +27,15 @@ destroy-stack:
 		-var project_name=$(PROJECT_NAME) \
 		-var aws_region=$(REGION)
 
-deploy:
-	tofu -chdir=$(TOFU_DIR) output
+deploy-site:
+	# Ensure you have built the app before running this, using `npm run build`
 	# Sync the output directory to S3
-	aws s3 sync out/ s3://nexus-threads-uk/ --delete
-	
+	aws s3 sync out/ s3://$(shell tofu -chdir=infra output -raw s3_bucket_name)/ --delete
+	# Invalidate CloudFront cache
+	aws cloudfront create-invalidation \
+  		--distribution-id $(shell tofu -chdir=infra output -raw cloudfront_distribution_id) \
+  		--paths "/*"
+
+package:
+	cd backend && \
+	zip -r contactus.zip .
