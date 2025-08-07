@@ -32,7 +32,7 @@ export const handler = async (event) => {
   };
 
   try {
-    console.log('Sending message to SNS:', params);
+    console.log('Sending message to SNS:');
     await sns.send(new PublishCommand(params));
     return {
       statusCode: 200,
