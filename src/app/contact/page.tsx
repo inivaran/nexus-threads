@@ -1,31 +1,59 @@
 'use client'
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
+const MAX_MESSAGE_LENGTH = 2000;
+
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setSuccess(null);
+
     const form = formRef.current;
     if (!form) return;
-    const data = {
-      name: (form.elements.namedItem('name') as HTMLInputElement)?.value,
-      email: (form.elements.namedItem('email') as HTMLInputElement)?.value,
-      message: (form.elements.namedItem('message') as HTMLTextAreaElement)?.value,
-    };
-    const res = await fetch('https://47fou6hiii.execute-api.eu-west-2.amazonaws.com/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (res.ok) {
-      alert('Message sent!');
-      form.reset();
-    } else {
-      alert('Failed to send message.');
+
+    const name = (form.elements.namedItem('name') as HTMLInputElement)?.value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement)?.value.trim();
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement)?.value.trim();
+
+    // Client-side validation
+    if (!name || !email || !message) {
+      setError('All fields are required.');
+      return;
+    }
+    if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    if (message.length > MAX_MESSAGE_LENGTH) {
+      setError(`Message cannot exceed ${MAX_MESSAGE_LENGTH} characters.`);
+      return;
+    }
+
+    const data = { name, email, message };
+    try {
+      const res = await fetch('https://47fou6hiii.execute-api.eu-west-2.amazonaws.com/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setSuccess('Thank you for getting in touch! We will get back to you soon.');
+        form.reset();
+      } else {
+        const result = await res.text();
+        setError(result || 'Failed to send message.');
+      }
+    } catch (err) {
+      console.error('Error sending message:', err);
+      setError('Network error. Please try again later.');
     }
   };
 
@@ -80,6 +108,8 @@ export default function Contact() {
               placeholder="Your Message"
             ></textarea>
           </div>
+          {error && <div className="text-red-600 mb-2">{error}</div>}
+          {success && <div className="text-green-600 mb-2">{success}</div>}
           <button
             type="submit"
             className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"

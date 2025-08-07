@@ -1,7 +1,8 @@
-variable "notification_email" {
-  description = "Email address to receive contact form submissions"
-  type        = string
-  default = "hemantksingh.hk@gmail.com"
+
+variable "notification_emails" {
+description = "List of email addresses to receive contact form submissions"
+  type = list(string)
+  default = ["hemantksingh.hk@gmail.com", "ektapawar05@gmail.com"]
 }
 
 locals {
@@ -10,15 +11,11 @@ locals {
   contactus_function_name = "${var.project_name}-contactus"
 }
 
-resource "aws_sns_topic" "contact" {
-  name = local.contactus_sns_topic
-}
-
 resource "aws_lambda_function" "contact_us" {
   filename         = local.contactus_package
   function_name    = local.contactus_function_name
   handler          = "contactus.handler"
-  runtime          = "nodejs18.x"
+  runtime          = "nodejs22.x"
   source_code_hash = filebase64sha256("${local.contactus_package}")
   environment {
     variables = {
@@ -67,8 +64,13 @@ resource "aws_iam_role_policy" "lambda_policy" {
   })
 }
 
+resource "aws_sns_topic" "contact" {
+  name = local.contactus_sns_topic
+}
+
 resource "aws_sns_topic_subscription" "contact_email" {
+  for_each  = toset(var.notification_emails)
   topic_arn = aws_sns_topic.contact.arn
   protocol  = "email"
-  endpoint  = var.notification_email
+  endpoint  = each.value
 }

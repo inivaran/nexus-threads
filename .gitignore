@@ -45,5 +45,6 @@ next-env.d.ts
 *.tfstate
 *.tfstate.backup
 *.tfplan
+*.backup
 
 *.zip

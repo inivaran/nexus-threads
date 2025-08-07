@@ -1,4 +1,4 @@
-.PHONY: stack destroy-stack deploy-site
+.PHONY: stack destroy-stack deploy-site test package
 
 TOFU_DIR=infra
 PROJECT_NAME=nexus-threads
@@ -38,4 +38,11 @@ deploy-site:
 
 package:
 	cd backend && \
-	zip -r contactus.zip .
+	rm contactus.zip && \
+	zip contactus.zip contactus.mjs
+
+test:
+	curl --header "Content-Type: application/json" \
+  		--request POST \
+  		--data '{"name":"Foo Bar","email":"foo@bar.com","message":"Hello"}' \
+  		$(shell tofu -chdir=infra output -raw api_endpoint)/contact
